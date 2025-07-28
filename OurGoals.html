@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Our Goals - One Shot Entertainment</title>
+    <link rel="stylesheet" href="styles.css"/>
+    <link rel="icon" href="logo.png"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        .story-section {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .story-image {
+            width: 100%;
+            max-width: 600px;
+            margin: 1.5rem auto;
+            display: block;
+            border-radius: 10px;
+            border: 2px solid #e50914;
+        }
+
+        .red-heading {
+            color: #e50914;
+            text-align: center;
+            font-size: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        iframe {
+            width: 100%;
+            max-width: 640px;
+            margin: 2rem auto;
+            display: block;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<header class="navbar">
+    <div class="logo" onclick="location.href='index.html'">
+        <img src="One Shot Logo Formatted.png" alt="One Shot Logo" class="logo-img">
+    </div>
+    <button class="menu-toggle" id="menu-toggle">☰</button>
+    <nav class="nav-links" id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="OurStory.html">Our Story</a>
+        <a href="OurTeam.html">Our Team</a>
+        <a href="OurFilms.html">Our Films</a>
+        <a href="OurGoals.html">Our Goals</a>
+    </nav>
+</header>
+
+<!-- Main Content -->
+<main class="intro">
+    <h1 class="red-heading fade-in">Our Goals</h1>
+
+    <section class="story-section">
+        <p class="fade-in">
+            The idea of “Making it” always seemed like such a distant dream in our eyes. That being said, the film industry is changing in countless ways. Large studios continue to fund massive projects, but sometimes sacrifice creativity and artistic integrity. As a result, there has never been a better time for up and coming indie filmmakers to ease their way into the industry. Embracing practical effects, low-budgets, but most importantly, a heart over cash mindset.
+        </p>
+
+        <!-- Carousel or Static Images -->
+        <img src="g8.JPG" alt="Goal Image 1" class="story-image fade-in" />
+
+        <p class="fade-in">
+            We firmly believe that TOGETHER independent filmmakers can persevere. We’re looking to assemble passionate artists of all ages and backgrounds, who are interested in film. It takes a lot to make a movie, from cinematographers, to actors, to composers, each role is essential. To sum things up, love the art of film? Have an aspect you’re drawn to? Looking for a like-minded community? Give us a shot!
+        </p>
+
+        <!-- Google Form Embed -->
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdvgGtm2g-QDd094VoUa6AlKn__Ysx12Lz3ugYtqm1Q-LzOSQ/viewform?embedded=true" height="1513" class="fade-in">
+            Loading…
+        </iframe>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <p>© 2025 One Shot Entertainment</p>
+    <div class="socials">
+        <a href="https://www.instagram.com/one.shotentertainment/" target="_blank">Instagram</a>
+        <a href="https://www.youtube.com/@oneshotentertainment00" target="_blank">YouTube</a>
+        <a href="https://x.com/1shot00" target="_blank">Twitter</a>
+        <a href="https://www.tiktok.com/@one.shotentertainment" target="_blank">TikTok</a>
+        <a href="mailto:oneshotentertainment00@gmail.com">Email</a>
+    </div>
+</footer>
+
+<script>
+    // Menu toggle
+    document.addEventListener("DOMContentLoaded", () => {
+        const menuToggle = document.getElementById("menu-toggle");
+        const navLinks = document.getElementById("nav-links");
+
+        menuToggle.addEventListener("click", () => {
+            navLinks.classList.toggle("show");
+        });
+
+        // Fade-in observer
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    });
+</script>
+
+</body>
+</html>

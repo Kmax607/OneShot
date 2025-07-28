@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Our Films - One Shot Entertainment</title>
+    <link rel="stylesheet" href="styles.css"/>
+    <link rel="icon" href="logo.png"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        .red-heading {
+            color: #e50914;
+            text-align: center;
+            font-size: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .films-wrapper {
+            display: flex;
+            justify-content: center;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+
+        .films-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.5rem;
+            justify-content: center;
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        .film-card {
+            cursor: pointer;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid #e50914;
+            background-color: #111;
+        }
+
+        .film-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .film-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        @media (max-width: 600px) {
+            .films-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<header class="navbar">
+    <div class="logo" onclick="location.href='index.html'">
+        <img src="One Shot Logo Formatted.png" alt="One Shot Logo" class="logo-img">
+    </div>
+    <button class="menu-toggle" id="menu-toggle">☰</button>
+    <nav class="nav-links" id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="OurStory.html">Our Story</a>
+        <a href="OurTeam.html">Our Team</a>
+        <a href="OurFilms.html">Our Films</a>
+        <a href="OurGoals.html">Our Goals</a>
+    </nav>
+</header>
+
+<!-- Main Content -->
+<main class="intro">
+    <h1 class="red-heading fade-in">Our Films</h1>
+
+    <div class="films-wrapper fade-in">
+        <section class="films-grid">
+
+            <div class="film-card" onclick="location.href='film1.html'">
+                <img src="DEAD%20AND%20BURIED.JPG" alt="Dead And Buried">
+            </div>
+
+            <div class="film-card" onclick="location.href='film2.html'">
+                <img src="TB.png" alt="The Boys">
+            </div>
+
+            <div class="film-card" onclick="location.href='film3.html'">
+                <img src="NF%20Poster.jpg" alt="Nightfall">
+            </div>
+
+            <div class="film-card" onclick="location.href='film4.html'">
+                <img src="DEAD%20AND%20BURIED.JPG" alt="Film 4 Poster">
+            </div>
+
+        </section>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <p>© 2025 One Shot Entertainment</p>
+    <div class="socials">
+        <a href="https://www.instagram.com/one.shotentertainment/" target="_blank">Instagram</a>
+        <a href="https://www.youtube.com/@oneshotentertainment00" target="_blank">YouTube</a>
+        <a href="https://x.com/1shot00" target="_blank">Twitter</a>
+        <a href="https://www.tiktok.com/@one.shotentertainment" target="_blank">TikTok</a>
+        <a href="mailto:oneshotentertainment00@gmail.com">Email</a>
+    </div>
+</footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const menuToggle = document.getElementById("menu-toggle");
+        const navLinks = document.getElementById("nav-links");
+
+        menuToggle.addEventListener("click", () => {
+            navLinks.classList.toggle("show");
+        });
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Team - One Shot Entertainment</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="icon" href="logo.png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+  <style>
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .team-section {
+      max-width: 1000px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .team-section.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .team-image {
+      flex: 1 1 300px;
+      max-width: 300px;
+      border-radius: 12px;
+      border: 2px solid #e50914;
+    }
+
+    .team-text {
+      flex: 2 1 400px;
+    }
+
+    .team-name {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #e50914;
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .team-section,
+      .team-section.reverse {
+        flex-direction: column;
+        text-align: center;
+      }
+      .team-image {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<header class="navbar">
+  <div class="logo" onclick="location.href='index.html'">
+    <img src="One Shot Logo Formatted.png" alt="One Shot Logo" class="logo-img">
+  </div>
+  <button class="menu-toggle" id="menu-toggle">☰</button>
+  <nav class="nav-links" id="nav-links">
+    <a href="index.html">Home</a>
+    <a href="OurStory.html">Our Story</a>
+    <a href="OurTeam.html">Our Team</a>
+    <a href="OurFilms.html">Our Films</a>
+    <a href="OurGoals.html">Our Goals</a>
+  </nav>
+</header>
+
+<main class="intro">
+  <h1 class="red-heading fade-in">Our Team</h1>
+
+  <section class="team-section fade-in">
+    <img src="KIERAN%20SHERRY.jpg" alt="Kieran Sherry" class="team-image">
+    <div class="team-text">
+      <div class="team-name">Kieran Sherry</div>
+      <p>I’m Kieran Sherry! A 21-year-old filmmaker studying at Ithaca College. Truthfully, all you need to know in order to understand me, is that my favorite TV shows are Star Wars: The Clone Wars, Gravity Falls, and Lost. I can’t exactly pinpoint the moment I knew that I wanted to tell stories. Film runs deep in my family. My father held me as a newborn with one arm, while editing his first feature film with the other. I grew up around sets, scripts, and conversations about movies. I took a particular interest in acting, later on, writing, and even LATER on, directing. Of course, I’m still learning, still experimenting, and trying to find new ways to collaborate with people who love this craft as much as I do. More than anything, I just want to keep telling stories that matter, to me, and hopefully to someone else, too.</p>
+    </div>
+  </section>
+
+  <section class="team-section reverse fade-in">
+    <img src="JAKE%20RUDERMAN.JPG" alt="Jake Ruderman" class="team-image">
+    <div class="team-text">
+      <div class="team-name">Jake Ruderman</div>
+      <p>Hey! I’m Jake Ruderman, a 21-year-old International Studies major at the College of the Holy Cross. Even though I don’t study film professionally, I’ve been helping make movies with Kieran and Daniel for as long as I can remember. Whether it’s in front of the camera, acting alongside my best friends, or behind the camera, maintaining the organized chaos as an assistant director,</p>
+    </div>
+  </section>
+
+  <section class="team-section fade-in">
+    <img src="DANIEL%20IRWIN.JPG" alt="Daniel Irwin" class="team-image">
+    <div class="team-text">
+      <div class="team-name">Daniel Irwin</div>
+      <p>Hey! I’m Daniel Lloyd Irwin. I’m a 21-year-old screenwriting major at Ithaca College who loves watching and making movies. Before I even knew how to write, I was coming up with stories in my head and having my dad furiously write them down in little journals. Some of my favorite movies are Inception, Before Sunset, and Adventureland. My favorite TV show of all time is Lego Ninjago. I wrote the screenplays for my first 350-page season of Ninjago when I was 16 years old, and yes, I go by Daniel “Lloyd” Irwin, because I happen to share a name with Ninjago’s protagonist (and because it makes me sound cooler than I actually am). After writing the screenplays for that season out of nothing but pure passion and love of storytelling, I realised I wanted to pursue filmmaking as a career - and luckily, I had some friends growing up with similar aspirations.</p>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>© 2025 One Shot Entertainment</p>
+  <div class="socials">
+    <a href="https://www.instagram.com/one.shotentertainment/" target="_blank">Instagram</a>
+    <a href="https://www.youtube.com/@oneshotentertainment00" target="_blank">YouTube</a>
+    <a href="https://x.com/1shot00" target="_blank">Twitter</a>
+    <a href="https://www.tiktok.com/@one.shotentertainment" target="_blank">TikTok</a>
+    <a href="mailto:oneshotentertainment00@gmail.com">Email</a>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+      observer.observe(el);
+    });
+  });
+</script>
+</body>
+</html>
