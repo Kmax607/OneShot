@@ -26,7 +26,14 @@ function typeEffect() {
         const currentWord = words[wordIndex];
 
         if (charIndex === 0) {
-            // Create a new span for each word
+            // Insert <br> before "Entertainment" on small screens
+            if (
+                wordIndex === 1 && // "Entertainment" is the 2nd word
+                window.innerWidth <= 600 // small screen threshold
+            ) {
+                title.appendChild(document.createElement("br"));
+            }
+
             wordSpan = document.createElement("span");
             wordSpan.classList.add("word");
             title.appendChild(wordSpan);
@@ -48,7 +55,6 @@ function typeEffect() {
             charIndex = 0;
             wordIndex++;
             if (wordIndex < words.length) {
-                // Add non-breaking space between words
                 const space = document.createTextNode("\u00A0");
                 title.appendChild(space);
                 setTimeout(typeNextChar, 100);
@@ -57,4 +63,16 @@ function typeEffect() {
     }
 
     typeNextChar();
+}
+
+window.addEventListener("scroll", handleScrollFadeIn);
+window.addEventListener("load", handleScrollFadeIn);
+
+function handleScrollFadeIn() {
+    document.querySelectorAll('.fade-in').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+            el.classList.add('visible');
+        }
+    });
 }
