@@ -336,3 +336,8 @@ a, button {
     }
 }
 
+.word-wrapper {
+    display: inline-block;
+    white-space: nowrap;
+}
+

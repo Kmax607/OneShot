@@ -1,63 +1,48 @@
-document.addEventListener("DOMContentLoaded", () => {
-    typeEffect();
-    handleScrollFadeIn();
-
-    const menuToggle = document.getElementById("menu-toggle");
-    const navLinks = document.getElementById("nav-links");
-
-    menuToggle.addEventListener("click", () => {
-        navLinks.classList.toggle("show");
-    });
-});
-
 const text = "One Shot Entertainment";
+const title = document.getElementById("typing-title");
 let index = 0;
 
+// Split the text into words and track which word/char we're on
+const words = text.split(" ");
+let wordIndex = 0;
+let charIndex = 0;
+let globalCharIndex = 0;
+
 function typeEffect() {
-    const title = document.getElementById("typing-title");
     if (!title) return;
 
-    const words = text.split(" ");
-    let wordIndex = 0;
-    let charIndex = 0;
-    let wordSpan = null;
-
-    function typeNextChar() {
-        const currentWord = words[wordIndex];
-
-        if (charIndex === 0) {
-            // Create a new span for each word
-            wordSpan = document.createElement("span");
-            wordSpan.classList.add("word");
-            title.appendChild(wordSpan);
-        }
-
-        const char = currentWord.charAt(charIndex);
-        const letterSpan = document.createElement("span");
-        letterSpan.classList.add("letter");
-        letterSpan.textContent = char;
-        letterSpan.style.animationDelay = `${index * 0.05}s`;
-        wordSpan.appendChild(letterSpan);
-
-        charIndex++;
-        index++;
-
-        if (charIndex < currentWord.length) {
-            setTimeout(typeNextChar, 100);
-        } else {
-            charIndex = 0;
-            wordIndex++;
-            if (wordIndex < words.length) {
-                // Add non-breaking space between words
-                const space = document.createTextNode("\u00A0");
-                title.appendChild(space);
-                setTimeout(typeNextChar, 100);
-            }
-        }
+    // Create a span for the current word (once)
+    if (charIndex === 0) {
+        const wordSpan = document.createElement("span");
+        wordSpan.className = "word";
+        wordSpan.style.whiteSpace = "nowrap";
+        title.appendChild(wordSpan);
     }
 
-    typeNextChar();
+    const currentWordSpan = title.lastChild;
+    const currentWord = words[wordIndex];
+    const letter = currentWord.charAt(charIndex);
+
+    const span = document.createElement("span");
+    span.classList.add("letter");
+    span.textContent = letter;
+    span.style.animationDelay = `${globalCharIndex * 0.05}s`;
+    currentWordSpan.appendChild(span);
+
+    charIndex++;
+    globalCharIndex++;
+
+    if (charIndex >= currentWord.length) {
+        // Add a non-breaking space after the word
+        currentWordSpan.appendChild(document.createTextNode('\u00A0'));
+        wordIndex++;
+        charIndex = 0;
+    }
+
+    if (wordIndex < words.length) {
+        setTimeout(typeEffect, 100);
+    }
 }
 
-window.addEventListener("scroll", handleScrollFadeIn);
-window.addEventListener("load", handleScrollFadeIn);
+// ✅ Start the typing effect
+typeEffect();
