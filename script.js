@@ -1,78 +1,27 @@
-document.addEventListener("DOMContentLoaded", () => {
-    typeEffect();
-    handleScrollFadeIn();
-
-    const menuToggle = document.getElementById("menu-toggle");
-    const navLinks = document.getElementById("nav-links");
-
-    menuToggle.addEventListener("click", () => {
-        navLinks.classList.toggle("show");
-    });
-});
-
-const text = "One Shot Entertainment";
-let index = 0;
-
 function typeEffect() {
     const title = document.getElementById("typing-title");
+    const text = "One Shot Entertainment"; // Set your desired title text here
+    let index = 0;
+
     if (!title) return;
 
-    const words = text.split(" ");
-    let wordIndex = 0;
-    let charIndex = 0;
-    let wordSpan = null;
+    function typeChar() {
+        const span = document.createElement("span");
+        span.classList.add("letter");
 
-    function typeNextChar() {
-        const currentWord = words[wordIndex];
+        const char = text.charAt(index);
+        span.textContent = char === " " ? "\u00A0" : char; // Preserve spaces
+        span.style.animationDelay = `${index * 0.05}s`;
+        title.appendChild(span);
 
-        if (charIndex === 0) {
-            // Insert <br> before "Entertainment" on small screens
-            if (
-                wordIndex === 1 && // "Entertainment" is the 2nd word
-                window.innerWidth <= 600 // small screen threshold
-            ) {
-                title.appendChild(document.createElement("br"));
-            }
-
-            wordSpan = document.createElement("span");
-            wordSpan.classList.add("word");
-            title.appendChild(wordSpan);
-        }
-
-        const char = currentWord.charAt(charIndex);
-        const letterSpan = document.createElement("span");
-        letterSpan.classList.add("letter");
-        letterSpan.textContent = char;
-        letterSpan.style.animationDelay = `${index * 0.05}s`;
-        wordSpan.appendChild(letterSpan);
-
-        charIndex++;
         index++;
 
-        if (charIndex < currentWord.length) {
-            setTimeout(typeNextChar, 100);
-        } else {
-            charIndex = 0;
-            wordIndex++;
-            if (wordIndex < words.length) {
-                const space = document.createTextNode("\u00A0");
-                title.appendChild(space);
-                setTimeout(typeNextChar, 100);
-            }
+        if (index < text.length) {
+            setTimeout(typeChar, 100);
         }
     }
 
-    typeNextChar();
+    typeChar(); // Start the effect
 }
 
-window.addEventListener("scroll", handleScrollFadeIn);
-window.addEventListener("load", handleScrollFadeIn);
-
-function handleScrollFadeIn() {
-    document.querySelectorAll('.fade-in').forEach(el => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) {
-            el.classList.add('visible');
-        }
-    });
-}
+document.addEventListener("DOMContentLoaded", typeEffect);
