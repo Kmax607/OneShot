@@ -325,9 +325,4 @@ a, button {
 .word {
     white-space: nowrap;
 }
-.letter {
-    display: inline-block;
-    opacity: 0;
-    animation: fadeIn 0.5s forwards;
-}
 
