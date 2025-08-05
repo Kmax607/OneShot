@@ -199,7 +199,7 @@ a, button {
 
 @media (max-width: 600px) {
     #typing-title {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
     }
 }
 
@@ -308,6 +308,7 @@ a, button {
     opacity: 0;
     animation: fadeIn 0.5s forwards;
 }
+
 @keyframes fadeIn {
     to {
         opacity: 1;
