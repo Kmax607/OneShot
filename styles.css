@@ -313,11 +313,11 @@ a, button {
 @media (max-width: 600px) {
 
     #typing-title {
-            font-size: 1.3rem;
+            font-size: 1.75rem;
         }
-    
+
     .nav-links a {
-        font-size: 0.35rem;
+        font-size: 0.95rem;
     }
 
     .logo {
