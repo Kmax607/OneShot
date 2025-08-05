@@ -313,3 +313,17 @@ a, button {
         opacity: 1;
     }
 }
+
+@media (max-width: 600px) {
+    .nav-links a {
+        font-size: 0.85rem; /* adjust as needed */
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .menu-toggle {
+        font-size: 1.5rem;
+    }
+}
