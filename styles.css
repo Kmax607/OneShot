@@ -197,11 +197,6 @@ a, button {
     display: inline-block;
 }
 
-@media (max-width: 600px) {
-    #typing-title {
-        font-size: 1.6rem;
-    }
-}
 
 #typing-title .letter {
     display: inline-block;
@@ -316,6 +311,11 @@ a, button {
 }
 
 @media (max-width: 600px) {
+
+    #typing-title {
+            font-size: 1.3rem;
+        }
+    
     .nav-links a {
         font-size: 0.35rem;
     }
