@@ -2,12 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
     typeEffect();
     handleScrollFadeIn();
 
-    const menuToggle = document.getElementById("menu-toggle");
-    const navLinks = document.getElementById("nav-links");
-
-    menuToggle.addEventListener("click", () => {
-        navLinks.classList.toggle("show");
-    });
 });
 
 const text = "One Shot Entertainment";

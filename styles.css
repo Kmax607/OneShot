@@ -18,8 +18,8 @@ body {
 
 #typing-title {
     font-family: 'Inter', sans-serif;
-    font-size: 0.72rem;
-    font-weight: 800;
+    font-size: 1rem;
+    font-weight: 600;
     color: #e50914;
     margin-bottom: 1rem;
 }
@@ -70,26 +70,11 @@ body {
 }
 
 /* Responsive nav toggle */
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-    }
-
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        background-color: #000;
-        position: absolute;
-        top: 64px;
-        left: 0;
-        width: 100%;
-        padding: 1rem;
-        border-top: 1px solid #333;
-    }
-
-    .nav-links.show {
-        display: flex;
-    }
+.nav-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 /* Intro Section */
