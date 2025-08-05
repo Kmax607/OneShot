@@ -189,12 +189,18 @@ a, button {
 
 #typing-title {
     font-family: 'Inter', sans-serif;
-    font-size: 1.7rem;
+    font-size: 1.9rem;
     font-weight: 800;
     color: #e50914;
     margin-bottom: 1rem;
     min-height: 2.5rem;
     display: inline-block;
+}
+
+@media (max-width: 600px) {
+    #typing-title {
+        font-size: 1.2rem;
+    }
 }
 
 #typing-title .letter {
