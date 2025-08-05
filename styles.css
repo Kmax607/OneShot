@@ -16,13 +16,6 @@ body {
     min-height: 100vh;
 }
 
-#typing-title {
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #e50914;
-    margin-bottom: 1rem;
-}
 
 
 /* Navbar */
@@ -81,14 +74,6 @@ body {
 .intro {
     padding: 2rem 1.5rem;
     text-align: center;
-}
-
-#typing-title {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #e50914;
-    margin-bottom: 1rem;
-    min-height: 2.5rem;
 }
 
 .intro-blurb {
@@ -201,13 +186,15 @@ a, button {
     }
 }
 
+
 #typing-title {
-    font-size: 2rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.79rem; /* Adjust this value to make it smaller */
     font-weight: 800;
     color: #e50914;
+    margin-bottom: 1rem;
     min-height: 2.5rem;
     display: inline-block;
-    font-family: 'Inter', sans-serif;
 }
 
 #typing-title .letter {
@@ -318,11 +305,5 @@ a, button {
 @keyframes fadeIn {
     to {
         opacity: 1;
-    }
-}
-
-@media (max-width: 600px) {
-    #typing-title {
-        font-size: 0.7rem;
     }
 }
