@@ -320,3 +320,9 @@ a, button {
         opacity: 1;
     }
 }
+
+@media (max-width: 600px) {
+    #typing-title {
+        font-size: 0.7rem;
+    }
+}
